@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://brd0sog5y1xqr"]
+
+[ext_resource type="Script" path="res://Character.gd" id="1_bhtog"]
+[ext_resource type="Script" path="res://Attackable.gd" id="2_kpvao"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dhwxb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_351wn"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qms50"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_daeov"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rr3om"]
+size = Vector3(0.24, 1, 1.21)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297677, 0)
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_bhtog")
+is_player = true
+camera = NodePath("Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dhwxb")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_351wn")
+
+[node name="Right Eye" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.159131, 0.500558, 0.525767)
+mesh = SubResource("SphereMesh_qms50")
+
+[node name="Left Eye" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.118486, 0.500558, 0.525767)
+mesh = SubResource("SphereMesh_qms50")
+
+[node name="Nose" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 1.35672, 0, 0.41604, 0.827896)
+mesh = SubResource("BoxMesh_daeov")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -5.67765e-08, 6.64768e-08, 0, 0.760406, 0.649448, -8.74228e-08, 0.649448, -0.760406, 0, 5.108, -2.552)
+
+[node name="HurtBoxArea3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08245, 0.919068)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxArea3D"]
+shape = SubResource("BoxShape3D_rr3om")
+
+[node name="Attackable" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_kpvao")
+
+[connection signal="body_entered" from="HurtBoxArea3D" to="." method="_on_hurt_box_area_3d_body_entered"]

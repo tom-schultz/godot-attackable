@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvw853sifwv2q"]
+
+[ext_resource type="PackedScene" uid="uid://brd0sog5y1xqr" path="res://character.tscn" id="1_b5bl1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q3opu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgfyx"]
+albedo_color = Color(0.364706, 0.584314, 0.341176, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1armn"]
+
+[node name="Root" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_q3opu")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgfyx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_1armn")
+
+[node name="NPC" parent="." instance=ExtResource("1_b5bl1")]
+transform = Transform3D(-0.318331, 0, -0.94798, 0, 1, 0, 0.94798, 0, -0.318331, 0, 0.297677, 4.36583)
+is_player = false
+
+[node name="Player" parent="." instance=ExtResource("1_b5bl1")]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.940573, 0.216514, -0.261618, 1.44534e-10, 0.770391, 0.637572, 0.339592, 0.599683, -0.724609, 4.6714, 4.19875, 0)
