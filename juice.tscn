@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://42508aamx6le"]
+
+[ext_resource type="Script" path="res://Juice.gd" id="1_28cx4"]
+[ext_resource type="Script" path="res://Attackable.gd" id="2_l4uu4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qxfy0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2tkie"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2icq"]
+albedo_color = Color(0.898039, 0.533333, 0, 1)
+
+[node name="Orange Juice 1" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76332, 0.979385, 0.882375)
+script = ExtResource("1_28cx4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_qxfy0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_2tkie")
+surface_material_override/0 = SubResource("StandardMaterial3D_q2icq")
+
+[node name="Attackable" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_l4uu4")
