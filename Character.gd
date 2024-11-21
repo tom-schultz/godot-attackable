@@ -8,7 +8,7 @@ const ROT_SPEED = 0.5
 @export var camera : Camera3D
 	
 func _ready():
-	%Attackable.attacked.connect(_handle_attack)
+	Attackable.register(self, _handle_attack)
 	
 func _process(delta):
 	if not is_player:
@@ -34,7 +34,7 @@ func _handle_attack():
 
 
 func _on_hurt_box_area_3d_body_entered(body):
-	var attackable : Attackable = body.get_node_or_null("%Attackable")
+	var attackable : Attackable = Attackable.find(body)
 	
 	if attackable == null:
 		return

@@ -11,8 +11,8 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_daeov"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rr3om"]
-size = Vector3(0.24, 1, 1.21)
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8s74"]
+size = Vector3(0.24, 1, 0.965)
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297677, 0)
@@ -46,10 +46,10 @@ mesh = SubResource("BoxMesh_daeov")
 transform = Transform3D(-1, -5.67765e-08, 6.64768e-08, 0, 0.760406, 0.649448, -8.74228e-08, 0.649448, -0.760406, 0, 5.108, -2.552)
 
 [node name="HurtBoxArea3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08245, 0.919068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08245, 1.08811)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBoxArea3D"]
-shape = SubResource("BoxShape3D_rr3om")
+shape = SubResource("BoxShape3D_y8s74")
 
 [node name="Attackable" type="Node" parent="."]
 unique_name_in_owner = true

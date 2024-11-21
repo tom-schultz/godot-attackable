@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvw853sifwv2q"]
+[gd_scene load_steps=6 format=3 uid="uid://ck2ve0tvoowei"]
 
 [ext_resource type="PackedScene" uid="uid://brd0sog5y1xqr" path="res://character.tscn" id="1_b5bl1"]
 [ext_resource type="PackedScene" uid="uid://42508aamx6le" path="res://juice.tscn" id="2_4rj6s"]
@@ -23,7 +23,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wgfyx")
 shape = SubResource("WorldBoundaryShape3D_1armn")
 
 [node name="NPC" parent="." instance=ExtResource("1_b5bl1")]
-transform = Transform3D(-0.318331, 0, -0.94798, 0, 1, 0, 0.94798, 0, -0.318331, 0, 0.297677, 4.36583)
+transform = Transform3D(-0.861222, 0, -0.50823, 0, 1, 0, 0.50823, 0, -0.861222, 0, 0.297677, 4.36583)
 is_player = false
 
 [node name="Player" parent="." instance=ExtResource("1_b5bl1")]
